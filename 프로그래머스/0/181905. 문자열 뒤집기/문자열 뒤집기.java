@@ -1,13 +1,16 @@
 class Solution {
-    public String solution(String my_string, int s, int e) {
-        String front = my_string.substring(0, s);
-        String middle = my_string.substring(s, e + 1);
-        String end = my_string.substring(e + 1);
+    public String solution(String my_string, int s, int e) {        
+        char[] arr = my_string.toCharArray();
+        char temp;
         
-        String reversedMiddle = new StringBuilder(middle).reverse().toString();
+        while(s < e) {
+            temp = arr[s];
+            arr[s] = arr[e];
+            arr[e] = temp;
+            s++;
+            e--;
+        }
         
-        String result = front + reversedMiddle + end;
-        
-        return result;
+        return String.valueOf(arr);
     }
 }
